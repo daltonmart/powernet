@@ -12,6 +12,7 @@ import javax.swing.text.BadLocationException;
 import logica.TerminalLogica;
 import static presentacion.Principal.crSesion;
 import static presentacion.Principal.historia;
+import terminal.Terminal;
 
 
 public class PowerNet extends javax.swing.JFrame {
@@ -25,7 +26,6 @@ public class PowerNet extends javax.swing.JFrame {
     private String usuario = "root";
     private String promptSep = " # ";
     private String prompt;
-    
             
     public PowerNet() {
         inicializar();
@@ -37,7 +37,6 @@ public class PowerNet extends javax.swing.JFrame {
         this.hostname = hostname;
         this.pwd = "~";
         inicializar();
-        
     }
 
     public PowerNet(String hostname, String usuario) {
@@ -59,8 +58,11 @@ public class PowerNet extends javax.swing.JFrame {
     private void inicializar() {
         initComponents();
         this.setLocationRelativeTo(null);
-        jTextArea2.setText(this.getPrompt());
-        jTextArea2.setCaretPosition(this.getPrompt().length());
+        jTextArea2_anterior.setText(this.getPrompt());
+        jTextArea2_anterior.setCaretPosition(this.getPrompt().length());
+        // aca ca Terminal
+        Terminal xterm = new Terminal("pc001");
+        jScrollPaneTerminal.add(xterm);
         System.out.println("** Iniciando Terminal **");
     }
    
@@ -86,7 +88,7 @@ public class PowerNet extends javax.swing.JFrame {
         jlTituloHistoria = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPaneTerminal = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jTextArea2_anterior = new javax.swing.JTextArea();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -209,17 +211,17 @@ public class PowerNet extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/Terminal.gif"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, -1, -1));
 
-        jTextArea2.setBackground(new java.awt.Color(0, 0, 0));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea2.setRows(5);
-        jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextArea2_anterior.setBackground(new java.awt.Color(0, 0, 0));
+        jTextArea2_anterior.setColumns(20);
+        jTextArea2_anterior.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
+        jTextArea2_anterior.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea2_anterior.setRows(5);
+        jTextArea2_anterior.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextArea2KeyPressed(evt);
+                jTextArea2_anteriorKeyPressed(evt);
             }
         });
-        jScrollPaneTerminal.setViewportView(jTextArea2);
+        jScrollPaneTerminal.setViewportView(jTextArea2_anterior);
 
         jPanel2.add(jScrollPaneTerminal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 350, 410));
 
@@ -246,15 +248,15 @@ public class PowerNet extends javax.swing.JFrame {
         this.setState(Principal.ICONIFIED);
     }//GEN-LAST:event_jlMinimizarMouseClicked
 
-    private void jTextArea2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyPressed
+    private void jTextArea2_anteriorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2_anteriorKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
                 int longPrompt = this.getPrompt().length();
-                int posCursor = jTextArea2.getCaretPosition();
-                int lineaNro = jTextArea2.getLineOfOffset(posCursor);                
-                int posInicioLinea = jTextArea2.getLineStartOffset(lineaNro)+longPrompt;
-                int posFinalLinea = jTextArea2.getLineEndOffset(lineaNro);
-                String lineaTextoIngresada = jTextArea2.getText(posInicioLinea, posFinalLinea-posInicioLinea);
+                int posCursor = jTextArea2_anterior.getCaretPosition();
+                int lineaNro = jTextArea2_anterior.getLineOfOffset(posCursor);                
+                int posInicioLinea = jTextArea2_anterior.getLineStartOffset(lineaNro)+longPrompt;
+                int posFinalLinea = jTextArea2_anterior.getLineEndOffset(lineaNro);
+                String lineaTextoIngresada = jTextArea2_anterior.getText(posInicioLinea, posFinalLinea-posInicioLinea);
                 System.out.println("* texto -> ["+lineaTextoIngresada+"]");
                 // *****************************************
                 // se envia a procesar la linea se comandos
@@ -264,12 +266,12 @@ public class PowerNet extends javax.swing.JFrame {
                 t.generarSalida();
                 String salidaDelComando = t.getSalida();
 
-                jTextArea2.setText(jTextArea2.getText()+"\n"+salidaDelComando+"\n"+this.getPrompt());
+                jTextArea2_anterior.setText(jTextArea2_anterior.getText()+"\n"+salidaDelComando+"\n"+this.getPrompt());
             } catch (BadLocationException ex) {
                 Logger.getLogger(PowerNet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }//GEN-LAST:event_jTextArea2KeyPressed
+    }//GEN-LAST:event_jTextArea2_anteriorKeyPressed
 
     private void jlMostrarPistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlMostrarPistaMouseClicked
 
@@ -420,7 +422,7 @@ public class PowerNet extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneArbol;
     private javax.swing.JScrollPane jScrollPaneTerminal;
     private javax.swing.JButton jSiguienteMision;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea2_anterior;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel jlCerrar;
     private javax.swing.JLabel jlContenidoHistoria;
