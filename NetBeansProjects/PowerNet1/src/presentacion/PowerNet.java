@@ -62,10 +62,8 @@ public class PowerNet extends javax.swing.JFrame {
         jTextArea2_anterior.setCaretPosition(this.getPrompt().length());
         // aca ca Terminal
         Terminal xterm = new Terminal("pc001");
-        xterm.setVisible(true);
+        //xterm.setVisible(true);
         jScrollPaneTerminal.setViewportView(xterm);
-        
-
         System.out.println("** Iniciando Terminal **");
     }
    

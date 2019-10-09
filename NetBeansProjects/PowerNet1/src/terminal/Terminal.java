@@ -90,7 +90,7 @@ public class Terminal extends javax.swing.JPanel {
                 salidaATerminal(salidaDelComando);
 
             } catch (BadLocationException ex) {
-                Logger.getLogger(Konsole.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Terminal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jTextArea1KeyPressed

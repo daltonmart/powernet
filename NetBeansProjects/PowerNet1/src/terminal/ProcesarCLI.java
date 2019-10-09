@@ -28,44 +28,43 @@ public class ProcesarCLI {
             comandoNombre = argumentos[0];
             comandoClass = Class.forName(comandoNombre);
             if (argumentos.length > 1) {    // Si tiene paramatros llamo al constructor con parametro String                
-               comandoParametros = textoDesdeCLI.substring(comandoNombre.length() + 1);
-               comandoObj = comandoClass.getDeclaredConstructor(String.class).newInstance(comandoParametros);   
+                comandoParametros = textoDesdeCLI.substring(comandoNombre.length() + 1);
+                comandoObj = comandoClass.getDeclaredConstructor(String.class).newInstance(comandoParametros);                
+//                Class c = Class.forName(comandoNombre);
+//                Constructor constructor;
+//                constructor = c.getDeclaredConstructor(String[].class);
+//                constructor.setAccessible(true);
+//                //Object impl = constructor.newInstance(new Object[]{});
+//                Object impl = constructor.newInstance((Object[]) argumentos);
             } else {                       // No tiene paramatros llamo al constructor sin parametros
-               comandoParametros = "";
-               comandoObj = comandoClass.getDeclaredConstructor().newInstance();
+                comandoParametros = "";
+                comandoObj = comandoClass.getDeclaredConstructor().newInstance();
             }
             Method mthd = comandoClass.getDeclaredMethod("ejecutar");
-            System.out.println(" metodo:"+mthd);
+            System.out.println(" metodo:" + mthd);
             String salida = (String) mthd.invoke(comandoObj);
-            
+
             anexarAConsolaSalida(" >> " + salida);
         } catch (ClassNotFoundException ex) {
             anexarAConsolaSalida("Error comando no encontrado ");
 
         } catch (Exception ex) {
             anexarAConsolaSalida("Error en " + ex);
-            System.err.println(">>>>>>>>"+ ex);
+            System.err.println(">>>>>>>>" + ex);
         }
         return getConsolaSalida();
-
     }
 
-    /**
-     * @return the consolaSalida
-     */
+
     public String getConsolaSalida() {
         return consolaSalida;
     }
 
-    /**
-     * @param consolaSalida the consolaSalida to set
-     */
     public void setConsolaSalida(String consolaSalida) {
         this.consolaSalida = consolaSalida;
     }
 
     public void anexarAConsolaSalida(String consolaSalida) {
-
         this.consolaSalida = this.consolaSalida + consolaSalida + "\n";
     }
 
