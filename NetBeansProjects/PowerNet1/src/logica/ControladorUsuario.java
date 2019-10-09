@@ -16,14 +16,11 @@ public class ControladorUsuario {
             this.usaCapania= new Campania();
     }
 
-    
     public ControladorUsuario(UsuariosDelJuego usuariosDelJuego, Campania usaCapania) {
         this.usuariosDelJuego = usuariosDelJuego;
         this.usaCapania = usaCapania;
     }
     
-    
-
     public UsuariosDelJuego getUsaUsuariosDelJuego() {
         return usuariosDelJuego;
     }
@@ -65,8 +62,4 @@ public class ControladorUsuario {
                     "Borrar Usuario",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
-    
-    
-    
 }

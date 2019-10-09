@@ -3,6 +3,7 @@ package presentacion;
 
 import javax.swing.JOptionPane;
 import static presentacion.Principal.crSesion;
+import static presentacion.Principal.usuariosDelJuego;
 
 public class ControladorSesionVentana extends javax.swing.JFrame {
 
@@ -11,7 +12,7 @@ public class ControladorSesionVentana extends javax.swing.JFrame {
     public ControladorSesionVentana() {
         initComponents();
         this.setLocationRelativeTo(null);
- //       crSesion.setUsuariosDeJuego(usuariosDelJuego);
+        crSesion.setUsuariosDeJuego(usuariosDelJuego);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
