@@ -83,15 +83,20 @@ public class ControladorSesionVentana extends javax.swing.JFrame {
         jtxtNickname.setBackground(new java.awt.Color(0, 0, 0));
         jtxtNickname.setFont(new java.awt.Font("OCR A Extended", 0, 14)); // NOI18N
         jtxtNickname.setForeground(new java.awt.Color(153, 153, 153));
-        jtxtNickname.setText("Usuario...");
+        jtxtNickname.setText("usuario");
         jtxtNickname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(49, 181, 115)));
         jPanel2.add(jtxtNickname, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 150, 30));
 
         jpxContrasenia.setBackground(new java.awt.Color(0, 0, 0));
         jpxContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jpxContrasenia.setForeground(new java.awt.Color(153, 153, 153));
-        jpxContrasenia.setText("Contraseña");
+        jpxContrasenia.setText("usuario");
         jpxContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(19, 181, 115)));
+        jpxContrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpxContraseniaActionPerformed(evt);
+            }
+        });
         jPanel2.add(jpxContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 150, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/imagenes/icons8_User_96px_2.png"))); // NOI18N
@@ -177,6 +182,10 @@ public class ControladorSesionVentana extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jLabelEntrarMouseClicked
+
+    private void jpxContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpxContraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpxContraseniaActionPerformed
 
 
     public static void main(String args[]) {
