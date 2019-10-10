@@ -5,6 +5,7 @@
  */
 package Equipo;
 
+import static Equipo.ControladorRed.agregarEquipo;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,15 +14,15 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logica.EstructuraArchivos;
 import terminal.Terminal;
 
-public class EquipoPC extends SistemaArchivos {
+public class EquipoPC extends EstructuraArchivos {
 
     private String hostname = "localhost";
     private String ip = "127.0.0.1";
-    private boolean servicios = false;
-    private SistemaArchivos fs;
-   // private ShellTerminal shell;
+    private boolean servidor = false;
+    // private ShellTerminal shell;
 
     public EquipoPC() {
     }
@@ -31,19 +32,23 @@ public class EquipoPC extends SistemaArchivos {
     }
 
     public String boot() {
-        System.out.println("Booting pc " + hostname + " ...");
+        System.out.println("Booting pc " + getHostname() + " ...");
         String estado = "";
         try {
             Properties p = new Properties();
-         
-            InputStream propertiesStream = ClassLoader.getSystemResourceAsStream(hostname+".properties");
+            InputStream propertiesStream = ClassLoader.getSystemResourceAsStream(getHostname()+".properties");
             p.load(propertiesStream);
             //propertiesStream.close();
             //p.load(new FileReader(""+hostname+".properties"));   //propiedades en archivo en disco
             //p.store(propertiesStream,"un comentario");
             propertiesStream.close();
             this.setHostname(p.getProperty("hostname"));
-            estado = hostname + ": Boot completo";
+            this.setIp(p.getProperty("ip"));
+            this.setServidor(p.getProperty("servicios").equalsIgnoreCase("true"));
+            ControladorRed.agregarEquipo(this);
+            
+            estado = getHostname() + ": Boot completo";
+            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(EquipoPC.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -55,8 +60,7 @@ public class EquipoPC extends SistemaArchivos {
 
     public Terminal connect() {
         Terminal terminal = new Terminal();
-        
-        return new Terminal();
+        return terminal; //new Terminal();
     }
 
     private void setHostname(String hostname) {
@@ -64,6 +68,22 @@ public class EquipoPC extends SistemaArchivos {
     }
     public String getHostname() {
         return this.hostname;        
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public boolean isServidor() {
+        return servidor;
+    }
+
+    public void setServidor(boolean servidor) {
+        this.servidor = servidor;
     }
 
 }

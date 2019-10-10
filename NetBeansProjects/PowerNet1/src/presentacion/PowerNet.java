@@ -32,42 +32,21 @@ public class PowerNet extends javax.swing.JFrame {
         iniciarCampania();
     }
 
-    public PowerNet(String hostname) {
-        iniciarCampania();
-        this.hostname = hostname;
-        this.pwd = "~";
-        inicializar();
-    }
-
-    public PowerNet(String hostname, String usuario) {
-        iniciarCampania();
-        this.hostname = hostname;
-        this.usuario = usuario;
-        this.pwd = "/home/" + usuario;
-        inicializar();
-        
-        
-    }
-
     private void iniciarCampania(){       
         jlContenidoHistoria.setText(historia.obtenerHistoriaDeCampania(crSesion.getNroCampania(),crSesion.getProgreso()));
-        jlContenidoPista.setText(historia.obtenerPistaDeCampania(crSesion.getNroCampania(),crSesion.getProgreso()));
-        
+        jlContenidoPista.setText(historia.obtenerPistaDeCampania(crSesion.getNroCampania(),crSesion.getProgreso()));     
     }
     
     private void inicializar() {
         initComponents();
         this.setLocationRelativeTo(null);
-        jTextArea2_anterior.setText(this.getPrompt());
-        jTextArea2_anterior.setCaretPosition(this.getPrompt().length());
-        // aca ca Terminal
+        // aca levanta  Terminal
         Terminal xterm = new Terminal("pc001");
         //xterm.setVisible(true);
         jScrollPaneTerminal.setViewportView(xterm);
         System.out.println("** Iniciando Terminal **");
     }
    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -76,7 +55,6 @@ public class PowerNet extends javax.swing.JFrame {
         jlCerrar = new javax.swing.JLabel();
         jlMinimizar = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextArea2_anterior = new javax.swing.JTextArea();
         jScrollPaneArbol = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jSiguienteMision = new javax.swing.JButton();
@@ -136,18 +114,6 @@ public class PowerNet extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextArea2_anterior.setBackground(new java.awt.Color(0, 0, 0));
-        jTextArea2_anterior.setColumns(20);
-        jTextArea2_anterior.setFont(new java.awt.Font("OCR A Extended", 0, 12)); // NOI18N
-        jTextArea2_anterior.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea2_anterior.setRows(5);
-        jTextArea2_anterior.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextArea2_anteriorKeyPressed(evt);
-            }
-        });
-        jPanel2.add(jTextArea2_anterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTree1.setBackground(new java.awt.Color(0, 153, 102));
         jTree1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -234,9 +200,6 @@ public class PowerNet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
     private void jlCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlCerrarMouseClicked
         int dialog=JOptionPane.YES_NO_OPTION;
         int result=JOptionPane.showConfirmDialog(null,"Desea Salir de Terminal","Salir de Terminal",dialog);
@@ -357,31 +320,6 @@ public class PowerNet extends javax.swing.JFrame {
          
     }//GEN-LAST:event_jSiguienteMisionActionPerformed
 
-    private void jTextArea2_anteriorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2_anteriorKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                int longPrompt = this.getPrompt().length();
-                int posCursor = jTextArea2_anterior.getCaretPosition();
-                int lineaNro = jTextArea2_anterior.getLineOfOffset(posCursor);
-                int posInicioLinea = jTextArea2_anterior.getLineStartOffset(lineaNro)+longPrompt;
-                int posFinalLinea = jTextArea2_anterior.getLineEndOffset(lineaNro);
-                String lineaTextoIngresada = jTextArea2_anterior.getText(posInicioLinea, posFinalLinea-posInicioLinea);
-                System.out.println("* texto -> ["+lineaTextoIngresada+"]");
-                // *****************************************
-                // se envia a procesar la linea se comandos
-                // *****************************************
-                //Se cinstancia terminal arriba
-                t.setEntrada(lineaTextoIngresada);//usa la interfaz
-                t.generarSalida();
-                String salidaDelComando = t.getSalida();
-
-                jTextArea2_anterior.setText(jTextArea2_anterior.getText()+"\n"+salidaDelComando+"\n"+this.getPrompt());
-            } catch (BadLocationException ex) {
-                Logger.getLogger(PowerNet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_jTextArea2_anteriorKeyPressed
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -422,7 +360,6 @@ public class PowerNet extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneArbol;
     private javax.swing.JScrollPane jScrollPaneTerminal;
     private javax.swing.JButton jSiguienteMision;
-    private javax.swing.JTextArea jTextArea2_anterior;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel jlCerrar;
     private javax.swing.JLabel jlContenidoHistoria;
@@ -436,58 +373,5 @@ public class PowerNet extends javax.swing.JFrame {
     private javax.swing.JLabel jlbtranpOcultarPista;
     private javax.swing.JPanel jpanelEncabezado;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the chroot
-     */
-    public String getChroot() {
-        return chroot;
-    }
-
-    /**
-     * @param chroot the chroot to set
-     */
-    public void setChroot(String chroot) {
-        this.chroot = chroot;
-    }
-
-    /**
-     * @return the pwd
-     */
-    public String getPwd() {
-        return pwd;
-    }
-
-    /**
-     * @param pwd the pwd to set
-     */
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    /**
-     * @return the prompt
-     */
-    private String getPrompt() {
-        this.prompt = this.usuario+"@"+this.hostname+":"+this.pwd+this.promptSep;        
-        return this.prompt;
-    }
-   
-    /**
-     * @return the usuario
-     */
-    public String getUsuario() {
-        return usuario;
-    }
-
-    /**
-     * @param usuario the usuario to set
-     */
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-  
-
 }
 

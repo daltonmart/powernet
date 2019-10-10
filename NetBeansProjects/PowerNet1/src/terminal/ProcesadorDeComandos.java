@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ProcesarCLI {
+public class ProcesadorDeComandos {
 
     private String comandoNombre;
     private String comandoParametros;
@@ -16,7 +16,7 @@ public class ProcesarCLI {
     private Object comandoObj;
     private String textoDesdeCLI;
 
-    public ProcesarCLI(String textoDesdeCLI) {
+    public ProcesadorDeComandos(String textoDesdeCLI) {
         System.out.println("Entrando a ProcesarCLI()");
         setConsolaSalida("");
         this.textoDesdeCLI = textoDesdeCLI;
