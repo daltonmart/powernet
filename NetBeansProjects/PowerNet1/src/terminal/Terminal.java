@@ -29,7 +29,6 @@ public class Terminal extends javax.swing.JPanel {
         this.usuario = usuario;
         this.pwd = "/home/" + usuario;
         inicializar();
-
     }
 
     private void inicializar() {

@@ -17,11 +17,12 @@ import java.util.logging.Logger;
 import logica.EstructuraArchivos;
 import terminal.Terminal;
 
-public class EquipoPC extends EstructuraArchivos {
+public class EquipoPC {
 
     private String hostname = "localhost";
     private String ip = "127.0.0.1";
     private boolean servidor = false;
+    private EstructuraArchivos fs = new EstructuraArchivos(); // faltaria indicar el nombre del PC a fin de cargar FS diferentes x PC
     // private ShellTerminal shell;
 
     public EquipoPC() {

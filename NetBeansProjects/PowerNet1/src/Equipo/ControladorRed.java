@@ -23,7 +23,7 @@ public class ControladorRed {
         red.add(equipo);
     }
 
-    static EquipoPC buscarEquipoXIP(String ip) {
+    static EquipoPC buscarEquipoXIp(String ip) {
         EquipoPC resultado = null;
         for (EquipoPC pc : red) {
             if (ip.equalsIgnoreCase(pc.getIp())) {
