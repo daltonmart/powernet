@@ -24,7 +24,6 @@ public class ls {
     }
 
     public ls() {        
-        System.out.println("constructor vacio!!!!");
     }
 
     public VariablesEntorno getVariablesEntorno() {
