@@ -8,7 +8,7 @@ package Equipo;
 
 import java.io.*; // <--------------
 import java.util.Scanner;
-public class WeasDeConsolaShell {
+public class WeasDeConsolaShellEjemplo {
     public static void main(String[] args) {
         boolean op=true;
         int menu=-2;
