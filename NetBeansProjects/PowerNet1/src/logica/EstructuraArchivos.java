@@ -23,6 +23,12 @@ public class EstructuraArchivos {
         this.archActual = new Archivo();
     }
 
+    public EstructuraArchivos(String hostname) {
+        // traer de la persistencia el Filesytem para hostname
+        this.listaArchivos = new ArrayList<>();
+        this.archActual = new Archivo();
+    }
+
     public ArrayList<Archivo> getListaArchivos() {
         return listaArchivos;
     }

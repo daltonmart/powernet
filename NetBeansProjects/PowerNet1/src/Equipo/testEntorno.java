@@ -25,8 +25,9 @@ public class testEntorno {
      
          pc2.ejecutarComando("");
          String resultado = pc1.boot();
+         resultado = pc2.boot();
          
-         pc1.ejecutarComando("ls");
+         //pc1.ejecutarComando("ls");
          
          System.out.println(">>>>"+resultado);
          

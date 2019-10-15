@@ -46,13 +46,13 @@ public class TerminalLogica {
     public void generarSalida(){
         String [] parts = this.getEntrada().split(" ");
         if (parts[0].equals("cat"))
-            ejecuta=new Cat();
+//            ejecuta=new Cat();
 //        if (parts[0].equals("ls"))
   //          ejecuta=new Ls();
-        ejecuta.setNomComando(parts[0]);
-        ejecuta.setNomLugar(parts[1]);
+//        ejecuta.setNomComando(parts[0]);
+//        ejecuta.setNomLugar(parts[1]);
         //ejecutarComando
-        this.setSalida(ejecuta.ejecutarComando());
+        this.setSalida(ejecuta.ejecutar());
     }
     
 }

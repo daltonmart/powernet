@@ -15,7 +15,7 @@ public class VariablesEntorno {
     private String hostname = "localhost";
     private String ip = "127.0.0.1";
     private boolean servidor = false;
-    private EstructuraArchivos fs;
+    private EstructuraArchivos fs ;
     //private ShellTerminal shell;    
     private String chroot = "~";
     private String pwd = "~";
@@ -25,6 +25,7 @@ public class VariablesEntorno {
 
     public VariablesEntorno(String hostname) {
         this.hostname = hostname;
+        this.fs = new EstructuraArchivos(hostname);
     }
 
     public VariablesEntorno(String hostname, String usuario) {

@@ -47,12 +47,12 @@ public class ProcesadorDeComandos {
 //                Object impl = constructor.newInstance((Object[]) argumentos);
             } else {                       // No tiene paramatros llamo al constructor sin parametros
                 comandoParametros = "";
-                //comandoObj = comandoClass.getDeclaredConstructor().newInstance();
-                comandoObj = comandoClass.newInstance();
+                comandoObj = comandoClass.getDeclaredConstructor().newInstance();
+                //comandoObj = comandoClass.newInstance();
             }
-            
-            Method mthd1 = comandoClass.getDeclaredMethod("setVariablesEntorno");
-            mthd1.invoke(comandoObj, variablesEntorno);
+            // Object comandoObjBase = comandoClass.getSuperclass().getDeclaredConstructor().newInstance();
+            Method mthd1 = comandoClass.getSuperclass().getDeclaredMethod("setVariablesEntorno", variablesEntorno.getClass());            
+            String salida1 = (String) mthd1.invoke(comandoObj, variablesEntorno); 
             
             Method mthd2 = comandoClass.getDeclaredMethod("ejecutar");
             System.out.println(" metodo:" + mthd2);

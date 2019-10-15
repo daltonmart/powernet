@@ -3,6 +3,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import logica.Archivo;
+import logica.Comando;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -10,29 +11,33 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
 
-public class ls {
+public class ls extends Comando {
 
     private String[] args;
     private VariablesEntorno variablesEntorno;
        
     public ls(String[] args) {
+        this();
         this.args = args;
     }
     
     public ls(String param) {
+        this();
         args = param.split(" ");
     }
 
-    public ls() {        
+    public ls() {    
+        super();
     }
 
-    public VariablesEntorno getVariablesEntorno() {
-        return variablesEntorno;
-    }
-
-    public void setVariablesEntorno(VariablesEntorno varEntorno) {
-        this.variablesEntorno = varEntorno;
-    }
+//    public VariablesEntorno getVariablesEntorno() {
+//        return variablesEntorno;
+//    }
+//
+//    @Override
+//    public void setVariablesEntorno(VariablesEntorno varEntorno) {
+//        this.variablesEntorno = varEntorno;
+//    }
 
     
      public String ejecutar() {
