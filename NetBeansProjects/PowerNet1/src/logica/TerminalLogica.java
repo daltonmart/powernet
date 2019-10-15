@@ -1,58 +1,82 @@
-
 package logica;
 
+import Equipo.VariablesEntorno;
+import java.lang.reflect.Constructor;
+import java.lang.Class;
+import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Meli
- */
 public class TerminalLogica {
-    private String entrada;
-    private String salida;
-    private Comando ejecuta;
-    
-    public TerminalLogica() {
+
+    private String comandoNombre;
+    private String comandoParametros;
+    private String[] argumentos;
+    private Class comandoClass;
+    private String consolaSalida;
+    private Object comandoObj;
+    private String textoDesdeCLI;
+    private VariablesEntorno variablesEntorno;
+
+//    public ProcesadorDeComandos(String textoDesdeCLI) {
+//        System.out.println("Entrando a ProcesarCLI()");
+//        setConsolaSalida("");
+//        this.textoDesdeCLI = textoDesdeCLI;
+//    }
+
+    TerminalLogica(String lineaTextoIngresada, VariablesEntorno variablesEntorno) {
+        System.out.println("Entrando a ProcesarCLI() ");
+        setConsolaSalida("");
+        this.textoDesdeCLI = lineaTextoIngresada;       
+        this.variablesEntorno = variablesEntorno;
     }
 
-    public TerminalLogica(String entrada, String salida) {
-        this.entrada = entrada;
-        this.salida = salida;
+    public String ejecutar() {
+        try {
+            argumentos = textoDesdeCLI.split(" ");
+            comandoNombre = argumentos[0];
+            comandoClass = Class.forName("logica.comandos." + comandoNombre);
+            if (argumentos.length > 1) {    // Si tiene parametros llamo al constructor con parametro String                
+                comandoParametros = textoDesdeCLI.substring(comandoNombre.length() + 1);
+                comandoObj = comandoClass.getDeclaredConstructor(String.class).newInstance(comandoParametros);                
+            } else {                       // No tiene paramatros llamo al constructor sin parametros
+                comandoParametros = "";
+                comandoObj = comandoClass.getDeclaredConstructor().newInstance();
+            }
+            // Object comandoObjBase = comandoClass.getSuperclass().getDeclaredConstructor().newInstance();
+            Method mthd1 = comandoClass.getSuperclass().getDeclaredMethod("setVariablesEntorno", variablesEntorno.getClass());            
+            mthd1.invoke(comandoObj, variablesEntorno); 
+            
+            Method mthd2 = comandoClass.getDeclaredMethod("ejecutar");
+            System.out.println(" metodo:" + mthd2);
+            String salida = (String) mthd2.invoke(comandoObj);
+
+            anexarAConsolaSalida(" >> " + salida);
+        } catch (ClassNotFoundException ex) {
+            anexarAConsolaSalida("Error comando no encontrado ");
+
+        } catch (Exception ex) {
+            anexarAConsolaSalida("Error en " + ex);
+            System.err.println(">>>>>>>>" + ex);
+        }
+        return getConsolaSalida();
     }
 
-    
-    
-    public String getEntrada() {
-        return entrada;
+
+    public String getConsolaSalida() {
+        return consolaSalida;
     }
 
-    public void setEntrada(String entrada) {
-        this.entrada = entrada;
+    public void setConsolaSalida(String consolaSalida) {
+        this.consolaSalida = consolaSalida;
     }
 
-    public String getSalida() {
-        return salida;
+    public void anexarAConsolaSalida(String consolaSalida) {
+        this.consolaSalida = this.consolaSalida + consolaSalida + "\n";
     }
 
-    public void setSalida(String salida) {
-        this.salida = salida;
+    public String getEntrada() {       
+        return "retorna public String getEntrada()";
     }
-    
-    
-    @Override
-    public String toString() {
-        return "Terminal{" + "entrada=" + entrada + ", salida=" + salida + '}';
-    }
-    
-    public void generarSalida(){
-        String [] parts = this.getEntrada().split(" ");
-        if (parts[0].equals("cat"))
-//            ejecuta=new Cat();
-//        if (parts[0].equals("ls"))
-  //          ejecuta=new Ls();
-//        ejecuta.setNomComando(parts[0]);
-//        ejecuta.setNomLugar(parts[1]);
-        //ejecutarComando
-        this.setSalida(ejecuta.ejecutar());
-    }
-    
+
 }

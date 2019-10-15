@@ -6,7 +6,7 @@
 package Equipo;
 
 import terminal.Terminal;
-import terminal.XTerm;
+import terminal.XTermParaPruebas;
 
 /**
  *
@@ -21,17 +21,13 @@ public class testEntorno {
          
          EquipoPC pc1 = new EquipoPC("pc001");
          EquipoPC pc2 = new EquipoPC();
-         
-     
-         pc2.ejecutarComando("");
+              
          String resultado = pc1.boot();
          resultado = pc2.boot();
          
-         //pc1.ejecutarComando("ls");
+        // pc1.ejecutarComando("ls");        
          
-         System.out.println(">>>>"+resultado);
-         
-         XTerm consola = pc1.connect();
+         XTermParaPruebas consola = pc1.connect();
          
         
         //Konsole1 consola = new Konsole();

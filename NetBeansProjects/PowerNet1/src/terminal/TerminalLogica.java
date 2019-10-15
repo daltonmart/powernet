@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ProcesadorDeComandos {
+public class TerminalLogica {
 
     private String comandoNombre;
     private String comandoParametros;
@@ -24,7 +24,7 @@ public class ProcesadorDeComandos {
 //        this.textoDesdeCLI = textoDesdeCLI;
 //    }
 
-    public ProcesadorDeComandos(String lineaTextoIngresada, VariablesEntorno variablesEntorno) {
+    TerminalLogica(String lineaTextoIngresada, VariablesEntorno variablesEntorno) {
         System.out.println("Entrando a ProcesarCLI() ");
         setConsolaSalida("");
         this.textoDesdeCLI = lineaTextoIngresada;       
@@ -73,10 +73,6 @@ public class ProcesadorDeComandos {
 
     public void anexarAConsolaSalida(String consolaSalida) {
         this.consolaSalida = this.consolaSalida + consolaSalida + "\n";
-    }
-
-    public VariablesEntorno getVariablesEntorno() {
-        return this.variablesEntorno;
     }
 
 }

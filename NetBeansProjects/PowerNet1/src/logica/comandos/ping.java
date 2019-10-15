@@ -1,3 +1,5 @@
+package logica.comandos;
+
 
 import org.apache.commons.cli.*;
 

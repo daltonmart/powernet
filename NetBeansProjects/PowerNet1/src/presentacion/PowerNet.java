@@ -18,7 +18,7 @@ import terminal.Terminal;
 public class PowerNet extends javax.swing.JFrame {
     //public static Directorio raiz=generarEstructura();
     
-    TerminalLogica t=new TerminalLogica();
+    TerminalLogica t; 
     
     private String hostname = "localhost";
     private String chroot = "~";

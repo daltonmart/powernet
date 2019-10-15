@@ -15,8 +15,9 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.EstructuraArchivos;
+import terminal.ProcesadorDeComandos;
 import terminal.Terminal;
-import terminal.XTerm;
+import terminal.XTermParaPruebas;
 
 public class EquipoPC {
 
@@ -24,7 +25,6 @@ public class EquipoPC {
     private String ip = "127.0.0.1";
     private boolean servidor = false;
     private EstructuraArchivos fs = new EstructuraArchivos(); // faltaria indicar el nombre del PC a fin de cargar FS diferentes x PC
-    //private ShellTerminal shell;    
     private VariablesEntorno environment = new VariablesEntorno();
 
     public EquipoPC() {
@@ -36,16 +36,16 @@ public class EquipoPC {
         this.hostname = hostname;        
     }
  
-    public XTerm connect() {
-        XTerm terminal = new XTerm();
+    public XTermParaPruebas connect() {
+        XTermParaPruebas terminal = new XTermParaPruebas();
         terminal.setVariablesEntorno(environment);
         return terminal; //new Terminal();
     }
 
-    void ejecutarComando(String comando) {
-        ls2 cmd = new ls2();
-        cmd.setVariablesEntorno(getEnvironment());
+    void ejecutarComando(String lineaComando) {
+        ProcesadorDeComandos cmd = new ProcesadorDeComandos(lineaComando, environment);
         cmd.ejecutar();
+        environment = cmd.getVariablesEntorno();
     }
       
     private void setHostname(String hostname) {

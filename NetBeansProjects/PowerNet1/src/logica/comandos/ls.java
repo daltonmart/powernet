@@ -1,3 +1,5 @@
+package logica.comandos;
+
 import Equipo.*;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -68,19 +70,8 @@ public class ls extends Comando {
             if( args == null) {
                path = variablesEntorno.getPwd();                
             }
-       //     ArrayList<Archivo> resultado = variablesEntorno.getFs().getListaArchivos();  // path
-            // Leemos la dirección IP. Sino existe generamos un error pues es un parámetro requerido.  
-//            String ip = cmdLine.getOptionValue("l");
-//            if (ip == null) {
-//                pw.print("La direccion IP es requerida");
-//            }
-//            
-
-
-            // ..............................................................  
-            // Aquí irían las tareas que tuviera que realizar la aplicación   
-            // ..............................................................  
-            System.out.println("Path :"+path);
+            ArrayList<Archivo> resultado = variablesEntorno.getFs().getListaArchivos();  // path
+            pw.print(resultado);
             System.out.println("OK");
 
         } catch (org.apache.commons.cli.ParseException | java.lang.NumberFormatException ex) {

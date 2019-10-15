@@ -15,29 +15,16 @@ import javax.swing.text.BadLocationException;
  *
  * @author junta
  */
-public class XTerm extends javax.swing.JFrame {
-    private VariablesEntorno variablesEntorno;
-
-    public VariablesEntorno getVariablesEntorno() {
-        return variablesEntorno;
-    }
-
-    public void setVariablesEntorno(VariablesEntorno varEntorno) {
-        this.variablesEntorno = varEntorno;
-    }
-
-    public XTerm() {
+public class XTermParaPruebas extends javax.swing.JFrame {
+   private VariablesEntorno variablesEntorno;
+   
+   public XTermParaPruebas() {
         variablesEntorno = new VariablesEntorno();
         inicializar();
     }
 
-    public XTerm(String hostname) {
+    public XTermParaPruebas(String hostname) {
         variablesEntorno = new VariablesEntorno(hostname);
-        inicializar();
-    }
-
-    public XTerm(String hostname, String usuario) {
-        variablesEntorno = new VariablesEntorno(hostname, usuario);
         inicializar();
     }
 
@@ -46,6 +33,14 @@ public class XTerm extends javax.swing.JFrame {
         jTextArea1.setText(this.getPrompt());
         jTextArea1.setCaretPosition(this.getPrompt().length());
         System.out.println("** Iniciando Terminal **");
+    }
+
+    public VariablesEntorno getVariablesEntorno() {
+        return variablesEntorno;
+    }
+
+    public void setVariablesEntorno(VariablesEntorno varEntorno) {
+        this.variablesEntorno = varEntorno;
     }
 
     private void salidaATerminal(String textoSalida) {
@@ -94,15 +89,13 @@ public class XTerm extends javax.swing.JFrame {
                 // *****************************************
                 // se envia a procesar la linea se comandos
                 // *****************************************                
-                ProcesadorDeComandos procesarCLI = new ProcesadorDeComandos(lineaTextoIngresada, variablesEntorno);
-                String salidaDelComando = procesarCLI.ejecutar();
-                //String salidaDelComando = "prueba de salida";
+                TerminalLogica procesarCLI = new TerminalLogica(lineaTextoIngresada, variablesEntorno);
+                String salidaDelComando = procesarCLI.ejecutar();                
                 salidaATerminal(salidaDelComando);
-
             } catch (BadLocationException ex) {
                 Logger.getLogger(Terminal.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }         // TODO add your handling code here:
+        }
     }//GEN-LAST:event_jTextArea1KeyPressed
 
     /**
@@ -122,20 +115,21 @@ public class XTerm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(XTerm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XTermParaPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(XTerm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XTermParaPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(XTerm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XTermParaPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(XTerm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(XTermParaPruebas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new XTerm().setVisible(true);
+                new XTermParaPruebas().setVisible(true);
             }
         });
     }

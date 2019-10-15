@@ -84,7 +84,7 @@ public class Terminal extends javax.swing.JPanel {
                 // *****************************************
                 // se envia a procesar la linea se comandos
                 // *****************************************                
-                ProcesadorDeComandos procesarCLI = new ProcesadorDeComandos(lineaTextoIngresada, variablesEntorno);
+                TerminalLogica procesarCLI = new TerminalLogica(lineaTextoIngresada, variablesEntorno);
                 String salidaDelComando = procesarCLI.ejecutar();
                 //String salidaDelComando = "prueba de salida";
                 salidaATerminal(salidaDelComando);
