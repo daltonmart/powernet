@@ -1,4 +1,6 @@
-import Equipo.*;
+package Equipo;
+
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import org.apache.commons.cli.Options;
 
 public class ls {
 
+        
     private String[] args;
     private VariablesEntorno variablesEntorno;
        
@@ -23,7 +26,7 @@ public class ls {
         args = param.split(" ");
     }
 
-    public ls() {        
+    ls() {        
     }
 
     public VariablesEntorno getVariablesEntorno() {
@@ -61,9 +64,10 @@ public class ls {
                 path = cmdLine.getOptionValue("p");
             }
             if( args == null) {
-                path = variablesEntorno.getPwd();                
+                path = variablesEntorno.getPwd();
+                
             }
-       //     ArrayList<Archivo> resultado = variablesEntorno.getFs().getListaArchivos();  // path
+            ArrayList<Archivo> resultado = variablesEntorno.getFs().getListaArchivos(path);
             // Leemos la dirección IP. Sino existe generamos un error pues es un parámetro requerido.  
 //            String ip = cmdLine.getOptionValue("l");
 //            if (ip == null) {

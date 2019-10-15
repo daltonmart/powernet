@@ -176,5 +176,9 @@ public class EstructuraArchivos {
             borrarArchivoDePersistenciaEstructuraArchivos(nombre);
         }
     }
+
+    public ArrayList<Archivo> getListaArchivos(String path) {       
+        return null;
+    }
     
 }

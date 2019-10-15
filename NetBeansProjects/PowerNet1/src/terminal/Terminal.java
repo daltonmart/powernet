@@ -1,5 +1,6 @@
 package terminal;
 
+import Equipo.VariablesEntorno;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,27 +8,28 @@ import javax.swing.text.BadLocationException;
 
 public class Terminal extends javax.swing.JPanel {
 
-    private String hostname = "localhost";
-    private String chroot = "~";
-    private String pwd = "~";
-    private String usuario = "root";
-    private String promptSep = " # ";
-    private String prompt;
+    private VariablesEntorno variablesEntorno;
+
+    public VariablesEntorno getVariablesEntorno() {
+        return variablesEntorno;
+    }
+
+    public void setVariablesEntorno(VariablesEntorno varEntorno) {
+        this.variablesEntorno = varEntorno;
+    }
 
     public Terminal() {
+        variablesEntorno = new VariablesEntorno();
         inicializar();
     }
 
     public Terminal(String hostname) {
-        this.hostname = hostname;
-        this.pwd = "~";
+        variablesEntorno = new VariablesEntorno(hostname);
         inicializar();
     }
 
     public Terminal(String hostname, String usuario) {
-        this.hostname = hostname;
-        this.usuario = usuario;
-        this.pwd = "/home/" + usuario;
+        variablesEntorno = new VariablesEntorno(hostname, usuario);
         inicializar();
     }
 
@@ -44,8 +46,7 @@ public class Terminal extends javax.swing.JPanel {
     }
 
     private String getPrompt() {
-        this.prompt = this.usuario + "@" + this.hostname + ":" + this.pwd + this.promptSep;
-        return this.prompt;
+        return variablesEntorno.getPrompt();
     }
 
     @SuppressWarnings("unchecked")
