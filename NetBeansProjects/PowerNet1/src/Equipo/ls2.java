@@ -12,21 +12,21 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
 
-public class ls {
+public class ls2 {
 
         
     private String[] args;
     private VariablesEntorno variablesEntorno;
        
-    public ls(String[] args) {
+    public ls2(String[] args) {
         this.args = args;
     }
     
-    public ls(String param) {
+    public ls2(String param) {
         args = param.split(" ");
     }
 
-    ls() {        
+    ls2() {        
     }
 
     public VariablesEntorno getVariablesEntorno() {

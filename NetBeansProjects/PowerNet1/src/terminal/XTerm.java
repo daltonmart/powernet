@@ -94,7 +94,7 @@ public class XTerm extends javax.swing.JFrame {
                 // *****************************************
                 // se envia a procesar la linea se comandos
                 // *****************************************                
-                ProcesadorDeComandos procesarCLI = new ProcesadorDeComandos(lineaTextoIngresada);
+                ProcesadorDeComandos procesarCLI = new ProcesadorDeComandos(lineaTextoIngresada, variablesEntorno);
                 String salidaDelComando = procesarCLI.ejecutar();
                 //String salidaDelComando = "prueba de salida";
                 salidaATerminal(salidaDelComando);

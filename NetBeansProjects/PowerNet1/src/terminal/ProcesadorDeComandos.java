@@ -1,5 +1,6 @@
 package terminal;
 
+import Equipo.VariablesEntorno;
 import java.lang.reflect.Constructor;
 import java.lang.Class;
 import java.lang.reflect.Method;
@@ -15,11 +16,19 @@ public class ProcesadorDeComandos {
     private String consolaSalida;
     private Object comandoObj;
     private String textoDesdeCLI;
+    private VariablesEntorno variablesEntorno;
 
-    public ProcesadorDeComandos(String textoDesdeCLI) {
-        System.out.println("Entrando a ProcesarCLI()");
+//    public ProcesadorDeComandos(String textoDesdeCLI) {
+//        System.out.println("Entrando a ProcesarCLI()");
+//        setConsolaSalida("");
+//        this.textoDesdeCLI = textoDesdeCLI;
+//    }
+
+    ProcesadorDeComandos(String lineaTextoIngresada, VariablesEntorno variablesEntorno) {
+        System.out.println("Entrando a ProcesarCLI() ");
         setConsolaSalida("");
-        this.textoDesdeCLI = textoDesdeCLI;
+        this.textoDesdeCLI = lineaTextoIngresada;       
+        this.variablesEntorno = variablesEntorno;
     }
 
     public String ejecutar() {
@@ -38,11 +47,16 @@ public class ProcesadorDeComandos {
 //                Object impl = constructor.newInstance((Object[]) argumentos);
             } else {                       // No tiene paramatros llamo al constructor sin parametros
                 comandoParametros = "";
-                comandoObj = comandoClass.getDeclaredConstructor().newInstance();
+                //comandoObj = comandoClass.getDeclaredConstructor().newInstance();
+                comandoObj = comandoClass.newInstance();
             }
-            Method mthd = comandoClass.getDeclaredMethod("ejecutar");
-            System.out.println(" metodo:" + mthd);
-            String salida = (String) mthd.invoke(comandoObj);
+            
+            Method mthd1 = comandoClass.getDeclaredMethod("setVariablesEntorno");
+            mthd1.invoke(comandoObj, variablesEntorno);
+            
+            Method mthd2 = comandoClass.getDeclaredMethod("ejecutar");
+            System.out.println(" metodo:" + mthd2);
+            String salida = (String) mthd2.invoke(comandoObj);
 
             anexarAConsolaSalida(" >> " + salida);
         } catch (ClassNotFoundException ex) {

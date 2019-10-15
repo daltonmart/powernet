@@ -24,6 +24,7 @@ public class ls {
     }
 
     public ls() {        
+        System.out.println("constructor vacio!!!!");
     }
 
     public VariablesEntorno getVariablesEntorno() {
@@ -61,7 +62,7 @@ public class ls {
                 path = cmdLine.getOptionValue("p");
             }
             if( args == null) {
-                path = variablesEntorno.getPwd();                
+               path = variablesEntorno.getPwd();                
             }
        //     ArrayList<Archivo> resultado = variablesEntorno.getFs().getListaArchivos();  // path
             // Leemos la dirección IP. Sino existe generamos un error pues es un parámetro requerido.  

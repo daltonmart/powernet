@@ -6,6 +6,7 @@
 package Equipo;
 
 import terminal.Terminal;
+import terminal.XTerm;
 
 /**
  *
@@ -29,7 +30,7 @@ public class testEntorno {
          
          System.out.println(">>>>"+resultado);
          
-         Terminal consola = pc1.connect();
+         XTerm consola = pc1.connect();
          
         
         //Konsole1 consola = new Konsole();

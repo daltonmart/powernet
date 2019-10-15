@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.EstructuraArchivos;
 import terminal.Terminal;
+import terminal.XTerm;
 
 public class EquipoPC {
 
@@ -35,13 +36,14 @@ public class EquipoPC {
         this.hostname = hostname;        
     }
  
-    public Terminal connect() {
-        Terminal terminal = new Terminal();
+    public XTerm connect() {
+        XTerm terminal = new XTerm();
+        terminal.setVariablesEntorno(environment);
         return terminal; //new Terminal();
     }
 
     void ejecutarComando(String comando) {
-        ls cmd = new ls();
+        ls2 cmd = new ls2();
         cmd.setVariablesEntorno(getEnvironment());
         cmd.ejecutar();
     }
