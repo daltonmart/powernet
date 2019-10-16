@@ -21,14 +21,14 @@ public class exit extends Comando {
         super();
     }
 
-//    public VariablesEntorno getVariablesEntorno() {
-//        return variablesEntorno;
-//    }
-//
-//    @Override
-//    public void setVariablesEntorno(VariablesEntorno varEntorno) {
-//        this.variablesEntorno = varEntorno;
-//    }
+    public VariablesEntorno getVariablesEntorno() {
+        return variablesEntorno;
+    }
+
+    @Override
+    public void setVariablesEntorno(VariablesEntorno varEntorno) {
+        this.variablesEntorno = varEntorno;
+    }
 
     
      public String ejecutar() {       
