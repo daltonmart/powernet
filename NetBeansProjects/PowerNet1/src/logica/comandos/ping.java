@@ -15,8 +15,7 @@ public class ping {
         args = param.split(" ");
     }
 
-    public ping(String[] args) {
-        this.args = args;
+    public ping() {
     }
 
     public String ejecutar() {

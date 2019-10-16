@@ -17,7 +17,7 @@ public class ls extends Comando {
 
     private String[] args;
     private VariablesEntorno variablesEntorno;
-       
+    
     public ls(String[] args) {
         this();
         this.args = args;
@@ -50,7 +50,6 @@ public class ls extends Comando {
       
         Options options = new Options();
         options.addOption("l", false, "lista en formato largo");
-        options.addOption("a", false, "lista archivos ocultos");
         options.addOption("p", false, "lista a partir del camino indicado");
         options.addOption("h", "help", false, "Imprime el mensaje de ayuda");
           

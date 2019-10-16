@@ -44,7 +44,7 @@ public class TerminalLogica {
                 comandoObj = comandoClass.getDeclaredConstructor().newInstance();
             }
             // Object comandoObjBase = comandoClass.getSuperclass().getDeclaredConstructor().newInstance();
-            Method mthd1 = comandoClass.getSuperclass().getDeclaredMethod("setVariablesEntorno", variablesEntorno.getClass());            
+            Method mthd1 = comandoClass.getDeclaredMethod("setVariablesEntorno", variablesEntorno.getClass());            
             mthd1.invoke(comandoObj, variablesEntorno); 
             
             Method mthd2 = comandoClass.getDeclaredMethod("ejecutar");
