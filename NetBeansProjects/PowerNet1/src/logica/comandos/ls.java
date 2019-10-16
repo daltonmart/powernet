@@ -67,6 +67,7 @@ public class ls extends Comando {
             if( args == null) {
                path = variablesEntorno.getPwd();                
             }
+            
             ArrayList<Archivo> resultado = variablesEntorno.getFs().getListaArchivos();  // path
             pw.print(resultado);
             System.out.println("OK");
@@ -77,5 +78,4 @@ public class ls extends Comando {
         pw.flush();
         return out.toString();
     }
-    
 }
