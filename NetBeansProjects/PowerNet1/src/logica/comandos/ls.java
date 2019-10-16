@@ -32,32 +32,30 @@ public class ls extends Comando {
         super();
     }
 
-//    public VariablesEntorno getVariablesEntorno() {
-//        return variablesEntorno;
-//    }
-//
-//    @Override
-//    public void setVariablesEntorno(VariablesEntorno varEntorno) {
-//        this.variablesEntorno = varEntorno;
-//    }
+    public VariablesEntorno getVariablesEntorno() {
+        return variablesEntorno;
+    }
+
+    public void setVariablesEntorno(VariablesEntorno varEntorno) {
+        this.variablesEntorno = varEntorno;
+    }
 
     
      public String ejecutar() {
-        CommandLineParser parser = null;
-        CommandLine cmdLine = null;
+        CommandLineParser parser;
+        CommandLine cmdLine ;
         HelpFormatter formatter = new HelpFormatter();
         StringWriter out = new StringWriter();
         PrintWriter pw = new PrintWriter(out);
-        
-        
-        String path= "";
       
         Options options = new Options();
         options.addOption("l", false, "lista en formato largo");
         options.addOption("a", false, "lista archivos ocultos");
         options.addOption("p", false, "lista a partir del camino indicado");
         options.addOption("h", "help", false, "Imprime el mensaje de ayuda");
-  
+          
+        String path= "";
+
         try {
             parser = new BasicParser();
             cmdLine = parser.parse(options, args);

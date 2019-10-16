@@ -11,6 +11,7 @@ public abstract class Comando {
     private VariablesEntorno variablesEntorno;
     
     public Comando() {
+        
     }
     
 //
@@ -19,13 +20,13 @@ public abstract class Comando {
 //        this.direccion = nomLugar;
 //    }
     
-    public VariablesEntorno getVariablesEntorno() {
-        return variablesEntorno;
-    }
-
-    public void setVariablesEntorno(VariablesEntorno varEntorno) {
-        this.variablesEntorno = varEntorno;
-    }
+//    public VariablesEntorno getVariablesEntorno() {
+//        return variablesEntorno;
+//    }
+//
+//    public void setVariablesEntorno(VariablesEntorno varEntorno) {
+//        this.variablesEntorno = varEntorno;
+//    }
 
 //    public String getNomComando() {
 //        return nomComando;
