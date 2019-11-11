@@ -171,7 +171,10 @@ public class EstructuraArchivos {
             url = directorioAnterior;
         }
         if (!url.startsWith("/")) {
-            url = this.getDirectorioActual() + "/" + urlEntrada;
+            if(this.getDirectorioActual().equals("/")) 
+                url = "/" + urlEntrada;    
+            else
+                url = this.getDirectorioActual() + "/" + urlEntrada;
         }
         return url;
     }
