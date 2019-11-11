@@ -46,12 +46,12 @@ public class ls extends Comando {
             }
             
             EstructuraArchivos estructArchivos =  red.getEquipoActual().getCompuestoPorUsuarios().buscarUsuarioConectado().getCompuestoPorArchivos();
-
-                    
+                  
             String urlEntrada = extraerUrlDeArgs(args);
             String url = estructArchivos.getUrlAbsoluta(urlEntrada);
             
             DataArchivo arch1 = estructArchivos.getArchivoDeUrl(url);
+            
             if (arch1 != null) {
 
                 ArrayList<DataArchivo> archivos = new ArrayList<>();
