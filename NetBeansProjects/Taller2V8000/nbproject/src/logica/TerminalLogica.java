@@ -1,16 +1,14 @@
-
 package logica;
 
 import java.lang.reflect.Method;
 
-
-
 public class TerminalLogica {
+
     private String entrada;
     private String salida;
     private String posicion;
     private Comando ejecuta;
-    
+
     public TerminalLogica() {
         this.posicion = "~";
     }
@@ -21,8 +19,6 @@ public class TerminalLogica {
         this.posicion = "~";
     }
 
-    
-    
     public String getEntrada() {
         return entrada;
     }
@@ -46,14 +42,12 @@ public class TerminalLogica {
     public void setPosicion(String posicion) {
         this.posicion = posicion;
     }
-    
-    
-    
+
     @Override
     public String toString() {
         return "Terminal{" + "entrada=" + entrada + ", salida=" + salida + '}';
     }
-    
+
     public void generarComandoYSalida() {
         Class comandoClass;
         String comandoNombre;
@@ -63,31 +57,26 @@ public class TerminalLogica {
         try {
             argumentos = entrada.split(" ");
             comandoNombre = argumentos[0];
-            
-            comandoClass = Class.forName("logica.comandos."+comandoNombre);
+
+            comandoClass = Class.forName("logica.comandos." + comandoNombre);
             if (argumentos.length > 1) {    // Si tiene paramatros llamo al constructor con parametro String                
-               comandoArgumento = entrada.substring(comandoNombre.length() + 1);
+                comandoArgumento = entrada.substring(comandoNombre.length() + 1);
             } else {                       // No tiene paramatros llamo al constructor sin parametros
-               comandoArgumento = "";
+                comandoArgumento = "";
             }
             comandoObj = comandoClass.getDeclaredConstructor(String.class).newInstance(comandoArgumento);
-            
+
             Method mthd = comandoClass.getDeclaredMethod("ejecutarYverificar");
-            System.out.println(" metodo:"+mthd);
+            System.out.println(" metodo:" + mthd);
             String salida = (String) mthd.invoke(comandoObj);
-            
+
             this.setSalida(salida);
-            
+
         } catch (ClassNotFoundException ex) {
             this.setSalida("Error comando no encontrado ");
-
         } catch (Exception ex) {
-            
             this.setSalida("Error en " + ex);
-            System.err.println(">>>>>>>>"+ ex);
+            System.err.println(">>>>>>>>" + ex);
         }
-        
-     
-            //this.setSalida(" >> " +ejecuta.ejecutarComando());
     }
 }

@@ -14,14 +14,14 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
 
-public class cd extends Comando {
+public class pwd extends Comando {
 
     private String[] args;
 
-    public cd() {
+    public pwd() {
     }
 
-    public cd(String argumentos) {
+    public pwd(String argumentos) {
         args = argumentos.split(" ");
     }
 
@@ -31,22 +31,9 @@ public class cd extends Comando {
 
         EstructuraArchivos estructArchivos = red.getEquipoActual().getCompuestoPorUsuarios().buscarUsuarioConectado().getCompuestoPorArchivos();
 
-        String urlEntrada = extraerUrlDeArgs(args);
-        if (urlEntrada.equals("")) {  // CD sin parametros va al $HOMEDIR
-            urlEntrada = "/home";
-        }
-        String url = estructArchivos.getUrlAbsoluta(urlEntrada);
-        DataArchivo arch1 = estructArchivos.getArchivoDeUrl(url);
-
-        if (arch1 == null) {
-            pw.println("No existe el fichero o el directorio");
-        } else {
-            if (arch1.getTipo() == 0) {
-                estructArchivos.setArchActual(arch1);
-            } else {
-                pw.println("No existe el fichero o el directorio");
-            }
-        }
+        
+        String url = estructArchivos.getDirectorioActual();
+        pw.println(url);
 
         pw.flush();
         return salida.toString();
