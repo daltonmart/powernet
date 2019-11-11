@@ -1,0 +1,16 @@
+/ ; 0 ;  ; 777 ; root ; root ; 0 ; Oct 20, 19 12:50 ; null
+home ; 0 ; / ; 666 ; root ; root ; 0 ; Oct 20, 19 12:51 ; null
+Melisa ; 0 ; /home/ ; 777 ; Meli ; grupoM ; 1 ; Oct 20, 19 12:52 ; null
+AMeli001 ; 1 ; /home/Melisa/ ; 555 ; Meli ; grupoM ; 2 ; Oct 21, 19 12:53 ; Hola mundo!!!100
+AMeli002 ; 1 ; /home/Melisa/ ; 444 ; Meli ; grupoM ; 3 ; Oct 25, 19 12:54 ; Hola mundo!!!101
+AMeli003 ; 1 ; /home/Melisa/ ; 333 ; Meli ; grupoM ; 4 ; Oct 25, 19 12:55 ; Hola mundo!!!102
+Sandra ; 0 ; /home/ ; 666 ; Sand ; grupoM ; 0 ; Oct 20, 19 12:56 ; null
+ASan003 ; 1 ; /home/Sandra/ ; 222 ; Sand ; grupoM ; 500 ; Oct 21, 19 12:57 ; Hola mundo!!!103
+ASan004 ; 1 ; /home/Sandra/ ; 111 ; Sand ; grupoM ; 600 ; Oct 21, 19 12:58 ; Hola mundo!!!104
+ASan005 ; 1 ; /home/Sandra/ ; 766 ; Sand ; grupoM ; 700 ; Oct 21, 19 12:59 ; Hola mundo!!!105
+ASan006 ; 1 ; /home/Sandra/ ; 700 ; Sand ; grupoM ; 800 ; Oct 25, 19 01:00 ; Hola mundo!!!106
+ASan007 ; 1 ; /home/Sandra/ ; 744 ; Sand ; grupoM ; 900 ; Oct 22, 19 01:00 ; Hola mundo!!!107
+ASan008 ; 1 ; /home/Sandra/ ; 744 ; Sand ; grupoM ; 1000 ; Oct 22, 19 01:00 ; Hola mundo!!!108
+ASan009 ; 1 ; /home/Sandra/ ; 744 ; Sand ; grupoM ; 1100 ; Oct 25, 19 01:00 ; Hola mundo!!!109
+ASan010 ; 1 ; /home/Sandra/ ; 744 ; Sand ; grupoM ; 1200 ; Oct 25, 19 01:00 ; Hola mundo!!!110
+ASan011 ; 1 ; /home/Sandra/ ; 744 ; Sand ; grupoM ; 1300 ; Oct 22, 19 01:00 ; Hola mundo!!!111
